@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React,{ useState,useEffect} from "react";
+import Header from "./components/Header";
 import './App.css';
+import CardGrid from "./components/CardGrid";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+    const [items,setItems]=useState([])
+    const [isLoading,SetIsLoading]=useState(true);
+
+   useEffect(()=>{
+     const fetchItems = async()=>{
+        const response = await fetch(`https://finalspaceapi.com/api/v0/character/`)
+        const data = await response.json();
+        console.log(data)
+        setItems(data)
+        SetIsLoading(false)
+     }
+     fetchItems()
+
+
+   },[])
+
+
+
+    return(
+        <div className="container">
+              <Header />
+              <CardGrid isLoading={isLoading} items={items} />
+        </div>
+       
+       
+    )
 }
 
 export default App;

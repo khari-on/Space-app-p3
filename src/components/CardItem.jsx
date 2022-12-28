@@ -13,11 +13,11 @@ const CardItem = ({item})=>{
                 <div className="card-back">
                     <h1>{item.name}</h1>
                     <ul>
-                        <li>item.name</li>
-                        <li>item.origin</li>
-                        <li>item.status</li>
-                        <li>item.species</li>
-                        <li>item.abilities[0]</li>
+                        <li>{item.name}</li>
+                        <li>{item.origin}</li>
+                        <li>{item.status}</li>
+                        <li>{item.species}</li>
+                        <li>{item.abilities[0]}</li>
                     </ul>
                 </div>
             </div>
